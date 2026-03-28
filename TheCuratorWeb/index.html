@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O Curador — Sua dose semanal de cinema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" src="css/styles.css" />
+</head>
+<body>
+    <div class="wrapper">
+
+        <!-- LEFT -->
+        <div class="left">
+            <div class="logo">O curador</div>
+
+            <div class="hero">
+                <p class="eyebrow">Newsletter semanal</p>
+                <h1>Filmes e séries que <em>valem</em> o seu tempo</h1>
+                <p class="desc">Toda semana uma seleção curada com indicações, por que assistir e onde encontrar. Sem spoiler, sem enrolação.</p>
+
+                <div class="features">
+                    <div class="feature"><span class="feature-dot"></span>1 edição por semana, toda sexta</div>
+                    <div class="feature"><span class="feature-dot"></span>Filmes, séries e documentários</div>
+                    <div class="feature"><span class="feature-dot"></span>Cancele quando quiser</div>
+                </div>
+            </div>
+
+            <div class="footer-note">© 2025 O curador · Feito com ☕</div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="card">
+                <p class="card-label">Assinar</p>
+
+                <div id="form-area">
+                    <div class="field">
+                        <label for="name">Seu nome</label>
+                        <input type="text" id="name" placeholder="Como posso te chamar?" autocomplete="given-name" />
+                    </div>
+                    <div class="field">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" />
+                    </div>
+
+                    <button class="btn" id="submit-btn" onclick="handleSubmit()">
+                        <span class="btn-inner">
+                            <span class="btn-text">Quero receber</span>
+                            <span class="spinner" id="spinner"></span>
+                        </span>
+                    </button>
+
+                    <div class="state-error" id="error-msg"></div>
+
+                    <p class="privacy">Sem spam. Seus dados ficam só aqui.</p>
+                </div>
+
+                <div class="state-success" id="success-area">
+                    <div class="icon">🎬</div>
+                    <h2>Você está dentro!</h2>
+                    <p>Boa escolha, <span id="success-name"></span>.<br />A próxima edição chega na sua caixa em breve.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
