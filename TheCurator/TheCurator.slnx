@@ -1,5 +1,12 @@
 <Solution>
-  <Project Path="Domain/Domain.csproj" />
-  <Project Path="Infra.Data/Infra.Data.csproj" />
-  <Project Path="WebApi/WebApi.csproj" />
+  <Folder Name="/Business/">
+    <Project Path="Application/Application.csproj" Id="2c224443-aed3-4b27-abc2-b93e0ad4f484" />
+  </Folder>
+  <Folder Name="/Infrastructure/">
+    <Project Path="Infra.Data/Infra.Data.csproj" />
+    <Project Path="Infra.Service/Infra.Service.csproj" Id="a2f5b727-2e37-437e-9e9c-c3bc946bc8be" />
+  </Folder>
+  <Folder Name="/Presentation/">
+    <Project Path="WebApi/WebApi.csproj" />
+  </Folder>
 </Solution>
