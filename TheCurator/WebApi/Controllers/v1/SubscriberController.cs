@@ -2,6 +2,7 @@
 using Application.Commands.Unsubscribe;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.UseCases.Subscriber;
 
 namespace WebApi.Controllers.v1
 {
@@ -20,7 +21,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
-        public async Task<IActionResult> SubscriberAsync([FromBody] SubscribeRequest request)
+        public async Task<IActionResult> SubscriberAsync([FromBody] SubscriberRequest request)
         {
             var result = await _mediator.Send(new SubscribeCommand(request.Name, request.Email));
 
