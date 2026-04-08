@@ -9,6 +9,15 @@ builder.Services.AddApplication();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
+// API Versioning
+builder.Services.AddApiVersioning(options =>
+{
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    options.ReportApiVersions = true;
+});
+    
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>

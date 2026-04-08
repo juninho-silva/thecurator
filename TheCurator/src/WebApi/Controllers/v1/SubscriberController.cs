@@ -8,7 +8,7 @@ namespace WebApi.Controllers.v1
 {
     [ApiVersion("1")]
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version}/[controller]")]
     public class SubscriberController : ControllerBase
     {
         private readonly IMediator _mediator;
