@@ -1,5 +1,6 @@
 ﻿using Application.Commands.Subscribe;
 using Application.Commands.Unsubscribe;
+using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.UseCases.Subscriber;

@@ -9,7 +9,6 @@
     <Project Path="src/Infra.Data/Infra.Data.csproj" />
     <Project Path="src/Infra.Service/Infra.Service.csproj" />
     <Project Path="src/WebApi/WebApi.csproj" />
-    <Project Path="src/Worker/Worker.csproj" Id="a08b70d3-77e0-4392-9b01-53e2afabf4f6" />
   </Folder>
   <Folder Name="/tests/" />
 </Solution>
