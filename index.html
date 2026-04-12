@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>O Curador — Sua dose semanal de cinema</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css" />
 </head>
 <body>
@@ -43,6 +43,100 @@
                     <div class="field">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" />
+                    </div>
+
+                    <div class="field">
+                        <label>Gêneros de Filmes</label>
+                        <div class="checkboxes-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-drama" name="movieGenres" value="Drama" />
+                                <label for="genre-drama">Drama</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-action" name="movieGenres" value="Ação" />
+                                <label for="genre-action">Ação</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-sci-fi" name="movieGenres" value="Ficção Científica" />
+                                <label for="genre-sci-fi">Ficção Científica</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-thriller" name="movieGenres" value="Suspense" />
+                                <label for="genre-thriller">Suspense</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-comedy" name="movieGenres" value="Comédia" />
+                                <label for="genre-comedy">Comédia</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-romance" name="movieGenres" value="Romance" />
+                                <label for="genre-romance">Romance</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Gêneros de Séries</label>
+                        <div class="checkboxes-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-series-drama" name="seriesGenres" value="Drama" />
+                                <label for="genre-series-drama">Drama</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-series-comedy" name="seriesGenres" value="Comédia" />
+                                <label for="genre-series-comedy">Comédia</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-series-action" name="seriesGenres" value="Ação" />
+                                <label for="genre-series-action">Ação</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-series-scifi" name="seriesGenres" value="Ficção Científica" />
+                                <label for="genre-series-scifi">Ficção Científica</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-series-adventure" name="seriesGenres" value="Aventura" />
+                                <label for="genre-series-adventure">Aventura</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="genre-series-thriller" name="seriesGenres" value="Suspense" />
+                                <label for="genre-series-thriller">Suspense</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Frequência da Newsletter</label>
+                        <div class="radios-group">
+                            <div class="radio-item">
+                                <input type="radio" id="freq-daily" name="frequency" value="Diariamente" />
+                                <label for="freq-daily">Diariamente</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="freq-monday" name="frequency" value="Segunda" />
+                                <label for="freq-monday">Segunda-feira</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="freq-tuesday" name="frequency" value="Terça" />
+                                <label for="freq-tuesday">Terça-feira</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="freq-wednesday" name="frequency" value="Quarta" />
+                                <label for="freq-wednesday">Quarta-feira</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="freq-thursday" name="frequency" value="Quinta" />
+                                <label for="freq-thursday">Quinta-feira</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="freq-friday" name="frequency" value="Sexta" checked />
+                                <label for="freq-friday">Sexta-feira</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="freq-weekend" name="frequency" value="Fim de Semana" />
+                                <label for="freq-weekend">Fim de Semana</label>
+                            </div>
+                        </div>
                     </div>
 
                     <button class="btn" id="submit-btn" onclick="handleSubmit()">

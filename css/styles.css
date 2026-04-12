@@ -51,11 +51,12 @@ html, body {
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     color: var(--accent);
+    text-transform: uppercase;
 }
 
 .hero {
@@ -183,6 +184,111 @@ input:focus {
 
 input::placeholder {
     color: rgba(136,132,128,0.4);
+}
+
+.checkboxes-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.checkbox-item input[type="checkbox"]:hover {
+    border-color: var(--accent);
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+    background: var(--accent);
+    border-color: var(--accent);
+    check-mark: white;
+}
+
+.checkbox-item input[type="checkbox"]:checked::before {
+    content: '✓';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: #0d0d0d;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.checkbox-item label {
+    margin: 0;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.radios-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radio-item input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.radio-item input[type="radio"]:hover {
+    border-color: var(--accent);
+}
+
+.radio-item input[type="radio"]:checked {
+    border-color: var(--accent);
+    background: radial-gradient(circle at center, var(--accent) 35%, transparent 35%),
+                radial-gradient(circle at center, var(--accent) 30%, transparent 30%);
+    box-shadow: inset 0 0 0 2px var(--surface);
+}
+
+.radio-item label {
+    margin: 0;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+    text-transform: none;
+    font-weight: 400;
+    letter-spacing: 0;
 }
 
 .btn {

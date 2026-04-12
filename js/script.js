@@ -12,6 +12,17 @@ async function handleSubmit() {
     if (!name) return showError('Coloca seu nome pra eu saber quem é você 😊');
     if (!email || !email.includes('@')) return showError('E-mail inválido.');
 
+    // Coletar gêneros de filmes selecionados
+    const movieGenres = Array.from(document.querySelectorAll('input[name="movieGenres"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Coletar gêneros de séries selecionados
+    const seriesGenres = Array.from(document.querySelectorAll('input[name="seriesGenres"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // Coletar frequência selecionada
+    const frequency = document.querySelector('input[name="frequency"]:checked').value;
+
     btn.disabled = true;
     spinner.style.display = 'inline-block';
     document.querySelector('.btn-text').textContent = 'Enviando...';
@@ -20,7 +31,13 @@ async function handleSubmit() {
         const res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email })
+            body: JSON.stringify({ 
+                name, 
+                email,
+                movieGenres,
+                seriesGenres,
+                frequency
+            })
         });
 
         const data = await res.json();
