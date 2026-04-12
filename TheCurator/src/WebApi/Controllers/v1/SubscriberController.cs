@@ -7,9 +7,9 @@ using WebApi.UseCases.Subscriber;
 
 namespace WebApi.Controllers.v1
 {
-    [ApiVersion("1")]
     [ApiController]
     [Route("api/v{version}/[controller]")]
+    [ApiVersion("1.0")]
     public class SubscriberController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -20,8 +20,8 @@ namespace WebApi.Controllers.v1
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         public async Task<IActionResult> SubscriberAsync([FromBody] SubscriberRequest request)
         {
             var result = await _mediator.Send(new SubscribeCommand(request.Name, request.Email));

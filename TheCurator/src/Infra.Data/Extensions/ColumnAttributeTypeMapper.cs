@@ -7,15 +7,15 @@ namespace Infra.Data.Extensions
     public class ColumnAttributeTypeMapper<T> : FallbackTypeMapper
     {
         public ColumnAttributeTypeMapper()
-        : base(new SqlMapper.ITypeMap[]
-        {
+        : base(
+        [
             new CustomPropertyTypeMap(typeof(T), (type, columnName) =>
                 type.GetProperties().FirstOrDefault(prop =>
                     prop.GetCustomAttributes<ColumnAttribute>(inherit: false)
                         .Any(attr => attr.Name == columnName)
                 )),
             new DefaultTypeMap(typeof(T))
-        })
+        ])
         { }
     }
 
