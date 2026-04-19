@@ -26,10 +26,12 @@ namespace Application.Commands.Subscribe
             var subscriber = new Subscriber
             {
                 Id = Guid.NewGuid(),
+                Active = true,
                 Name = request.Name,
                 Email = request.Email,
                 UnsubscribeToken = Guid.NewGuid().ToString("N"),
-                Active = true,
+                GenreMovies = [.. request.GenresMovie.Select(g => g.ToString())],
+                GenreTVs = [.. request.GenresSeries.Select(g => g.ToString())],
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
             };

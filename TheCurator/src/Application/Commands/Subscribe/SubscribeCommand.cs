@@ -8,21 +8,21 @@ namespace Application.Commands.Subscribe
         public string Name { get; private set; }
         public string Email { get; private set; }
         public List<GenresMovie> GenresMovie { get; private set; }
-        public List<GenresTV> GenresTVs { get; private set; }
-        public DayOfWeek PrefferenceDay { get; private set; }
+        public List<GenresTV> GenresSeries { get; private set; }
+        public DayOfWeek Frequency { get; private set; }
 
         public SubscribeCommand(
             string name, 
             string email, 
-            List<GenresMovie> gendersMovie, 
-            List<GenresTV> genresTVs, 
-            DayOfWeek prefferenceDay)
+            List<GenresMovie> genresMovie, 
+            List<GenresTV> genresSeries, 
+            DayOfWeek frequency)
         {
             Name = name;
             Email = email;
-            GenresMovie = gendersMovie;
-            GenresTVs = genresTVs;
-            PrefferenceDay = prefferenceDay;
+            GenresMovie = genresMovie;
+            GenresSeries = genresSeries;
+            Frequency = frequency;
         }
     }
 }
