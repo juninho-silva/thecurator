@@ -13,9 +13,9 @@ namespace Infra.Data
         [Column("unsubscribe_token")]
         public string UnsubscribeToken { get; set; } = string.Empty;
         [Column("genre_movies")]
-        public List<string> GenreMovies { get; set; } = new();
+        public List<int> GenreMovies { get; set; } = new();
         [Column("genre_tv")]
-        public List<string> GenreTVs { get; set; } = new();
+        public List<int> GenreTVs { get; set; } = new();
         [Column("active")]
         public bool Active { get; set; }
         [Column("created_at")]

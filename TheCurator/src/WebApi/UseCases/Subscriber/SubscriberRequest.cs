@@ -11,8 +11,8 @@ namespace WebApi.UseCases.Subscriber
         [JsonPropertyName("frequency")]
         public required string Frequency { get; set; }
         [JsonPropertyName("genres_movies")]
-        public required List<string> GenresMovies { get; set; }
+        public required List<int> GenresMovies { get; set; }
         [JsonPropertyName("genres_series")]
-        public required List<string> GenresSeries { get; set; }
+        public required List<int> GenresSeries { get; set; }
     }
 }

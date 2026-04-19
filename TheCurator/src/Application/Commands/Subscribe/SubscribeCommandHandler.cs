@@ -30,8 +30,8 @@ namespace Application.Commands.Subscribe
                 Name = request.Name,
                 Email = request.Email,
                 UnsubscribeToken = Guid.NewGuid().ToString("N"),
-                GenreMovies = [.. request.GenresMovie.Select(g => g.ToString())],
-                GenreTVs = [.. request.GenresSeries.Select(g => g.ToString())],
+                GenreMovies = [.. request.GenresMovie.Select(g => (int)g)],
+                GenreTVs = [.. request.GenresSeries.Select(g => (int)g)],
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow,
             };

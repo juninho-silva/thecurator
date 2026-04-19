@@ -1,5 +1,6 @@
 ﻿using Application.Commands.Subscribe;
 using Application.Commands.Unsubscribe;
+using Application.Common.Enums;
 using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,12 +20,59 @@ namespace WebApi.Controllers.v1
             _mediator = mediator;
         }
 
+        [HttpGet("genres-movies")]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+        public IActionResult GetGenresMovies()
+        {
+            var values = Enum.GetValues<GenresMovie>()
+            .Select(g => new
+            {
+                Id = (int)g,
+                Name = g.ToString()
+            });
+
+            return Ok(values);
+        }
+
+        [HttpGet("genres-tv")]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+        public IActionResult GetGenresSeries()
+        {
+            var values = Enum.GetValues<GenresTV>()
+            .Select(g => new
+            {
+                Id = (int)g,
+                Name = g.ToString()
+            });
+
+            return Ok(values);
+        }
+
+        [HttpGet("frequencies-in-days")]
+        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+        public IActionResult GetFrequencies()
+        {
+            var values = Enum.GetValues<DayOfWeek>()
+            .Select(g => new
+            {
+                Id = (int)g,
+                Name = g.ToString()
+            });
+
+            return Ok(values);
+        }
+
         [HttpPost]
         [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status409Conflict)]
         public async Task<IActionResult> SubscriberAsync([FromBody] SubscriberRequest request)
         {
-            var result = await _mediator.Send(new SubscribeCommand(request.Name, request.Email));
+            var result = await _mediator.Send(new SubscribeCommand(
+                request.Name,
+                request.Email,
+                request.GenresMovies.Select(x => (GenresMovie)x).ToList(),
+                request.GenresSeries.Select(x => (GenresTV)x).ToList(),
+                Enum.Parse<DayOfWeek>(request.Frequency, true)));
 
             if (!result)
             {

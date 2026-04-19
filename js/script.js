@@ -1,4 +1,95 @@
-const API_URL = 'https://SEU-BACKEND.railway.app/subscribe';
+const API_BASE_URL = 'http://localhost:5275/api/v1/subscriber';
+const API_URL = `${API_BASE_URL}`;
+
+// Carregar gêneros e frequências quando a página carregar
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        await Promise.all([
+            loadMovieGenres(),
+            loadSeriesGenres(),
+            loadFrequencies()
+        ]);
+    } catch (error) {
+        console.error('Erro ao carregar dados:', error);
+        showError('Erro ao carregar formulário. Tente recarregar a página.');
+    }
+});
+
+async function loadMovieGenres() {
+    try {
+        const res = await fetch(`${API_BASE_URL}/genres-movies`);
+        const genres = await res.json();
+        renderGenres(genres, 'movieGenres', 'movieGenresContainer');
+    } catch (error) {
+        console.error('Erro ao carregar gêneros de filmes:', error);
+    }
+}
+
+async function loadSeriesGenres() {
+    try {
+        const res = await fetch(`${API_BASE_URL}/genres-tv`);
+        const genres = await res.json();
+        renderGenres(genres, 'seriesGenres', 'seriesGenresContainer');
+    } catch (error) {
+        console.error('Erro ao carregar gêneros de séries:', error);
+    }
+}
+
+async function loadFrequencies() {
+    try {
+        const res = await fetch(`${API_BASE_URL}/frequencies-in-days`);
+        const frequencies = await res.json();
+        renderFrequencies(frequencies);
+    } catch (error) {
+        console.error('Erro ao carregar frequências:', error);
+    }
+}
+
+function renderGenres(genres, groupName, containerId) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    
+    genres.forEach((genre) => {
+        const id = `${groupName}-${genre.id}`;
+        const div = document.createElement('div');
+        div.className = 'checkbox-item';
+        div.innerHTML = `
+            <input type="checkbox" id="${id}" name="${groupName}" value="${genre.id}" />
+            <label for="${id}">${genre.name}</label>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function renderFrequencies(frequencies) {
+    const container = document.getElementById('frequenciesContainer');
+    container.innerHTML = '';
+    
+    // Map português para os valores dos enums do backend
+    const frequencyMap = {
+        'Sunday': 'Domingo',
+        'Monday': 'Segunda',
+        'Tuesday': 'Terça',
+        'Wednesday': 'Quarta',
+        'Thursday': 'Quinta',
+        'Friday': 'Sexta',
+        'Saturday': 'Sábado'
+    };
+    
+    frequencies.forEach((freq, index) => {
+        const id = `freq-${freq.id}`;
+        const displayName = frequencyMap[freq.name] || freq.name;
+        const isChecked = freq.name === 'Friday' ? 'checked' : ''; // Sexta-feira como padrão
+        
+        const div = document.createElement('div');
+        div.className = 'radio-item';
+        div.innerHTML = `
+            <input type="radio" id="${id}" name="frequency" value="${freq.name}" ${isChecked} />
+            <label for="${id}">${displayName}</label>
+        `;
+        container.appendChild(div);
+    });
+}
 
 async function handleSubmit() {
     const name = document.getElementById('name').value.trim();
@@ -14,11 +105,11 @@ async function handleSubmit() {
 
     // Coletar gêneros de filmes selecionados
     const movieGenres = Array.from(document.querySelectorAll('input[name="movieGenres"]:checked'))
-        .map(checkbox => checkbox.value);
+        .map(checkbox => parseInt(checkbox.value));
 
     // Coletar gêneros de séries selecionados
     const seriesGenres = Array.from(document.querySelectorAll('input[name="seriesGenres"]:checked'))
-        .map(checkbox => checkbox.value);
+        .map(checkbox => parseInt(checkbox.value));
 
     // Coletar frequência selecionada
     const frequency = document.querySelector('input[name="frequency"]:checked').value;
@@ -28,14 +119,14 @@ async function handleSubmit() {
     document.querySelector('.btn-text').textContent = 'Enviando...';
 
     try {
-        const res = await fetch(API_URL, {
+        const res = await fetch(`${API_BASE_URL}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 name, 
                 email,
-                movieGenres,
-                seriesGenres,
+                genres_movies: movieGenres,
+                genres_series: seriesGenres,
                 frequency
             })
         });
