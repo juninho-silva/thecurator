@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5275/api/v1/subscriber';
+const API_BASE_URL = 'http://localhost:5275/api/v1';
 const API_URL = `${API_BASE_URL}`;
 
 // Carregar gêneros e frequências quando a página carregar
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadMovieGenres() {
     try {
-        const res = await fetch(`${API_BASE_URL}/genres-movies`);
+        const res = await fetch(`${API_BASE_URL}/contents/genres-movies`);
         const genres = await res.json();
         renderGenres(genres, 'movieGenres', 'movieGenresContainer');
     } catch (error) {
@@ -27,7 +27,7 @@ async function loadMovieGenres() {
 
 async function loadSeriesGenres() {
     try {
-        const res = await fetch(`${API_BASE_URL}/genres-tv`);
+        const res = await fetch(`${API_BASE_URL}/contents/genres-tv`);
         const genres = await res.json();
         renderGenres(genres, 'seriesGenres', 'seriesGenresContainer');
     } catch (error) {
@@ -37,7 +37,7 @@ async function loadSeriesGenres() {
 
 async function loadFrequencies() {
     try {
-        const res = await fetch(`${API_BASE_URL}/frequencies-in-days`);
+        const res = await fetch(`${API_BASE_URL}/contents/frequencies-in-days`);
         const frequencies = await res.json();
         renderFrequencies(frequencies);
     } catch (error) {
@@ -119,7 +119,7 @@ async function handleSubmit() {
     document.querySelector('.btn-text').textContent = 'Enviando...';
 
     try {
-        const res = await fetch(`${API_BASE_URL}`, {
+        const res = await fetch(`${API_BASE_URL}/events/subscriber`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
