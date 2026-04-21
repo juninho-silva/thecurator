@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5275/api/v1';
+const API_BASE_URL = 'https://thecurator.railway.internal/api/v1';
 const API_URL = `${API_BASE_URL}`;
 
 // Carregar gêneros e frequências quando a página carregar
