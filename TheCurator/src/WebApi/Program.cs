@@ -2,7 +2,6 @@ using Application.Extensions;
 using Infra.Data;
 using Infra.Service.Extensions;
 using Asp.Versioning;
-using WebApi.Backgrounds;
 using WebApi.Swagger;
 using WebApi.Middlewares;
 
@@ -42,7 +41,6 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod()
               .AllowAnyHeader());
 });
-builder.Services.AddHostedService<NewslatterJob>();
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionHandlingMiddleware>();  // ← Adicionar aqui
