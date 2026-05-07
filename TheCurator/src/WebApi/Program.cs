@@ -6,6 +6,10 @@ using WebApi.Swagger;
 using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
+# if !DEBUG
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8000";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+# endif
 builder.Services.AddInfraData(builder.Configuration);
 builder.Services.AddInfraService();
 builder.Services.AddApplication();

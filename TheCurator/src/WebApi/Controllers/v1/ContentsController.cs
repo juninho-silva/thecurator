@@ -1,6 +1,5 @@
 using Application.Common.Enums;
 using Asp.Versioning;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers.v1;
